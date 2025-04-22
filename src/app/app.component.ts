@@ -1,18 +1,16 @@
-// app.component.ts
 import { Component, effect } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { postsSignal } from './posts.state';
-import { HeaderComponent } from "./header.component";
+import { postsSignal } from './posts/posts.state';
+import { HeaderComponent } from "./header/header.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterModule, HeaderComponent],
-  template: `<app-header></app-header><router-outlet></router-outlet>`,
+  templateUrl: './app.component.html',
 })
 export class AppComponent {
   constructor() {
-    // now this runs inside Angular’s injector
     effect(() => {
       const posts = postsSignal();
       localStorage.setItem('posts', JSON.stringify(posts));

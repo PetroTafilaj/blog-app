@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home.component';
-import { PostDetailComponent } from './post-detail.component';
-import { PostEditorComponent } from './post-editor.component';
+import { HomeComponent } from './home/home.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
+import { PostEditorComponent } from './posts/post-editor/post-editor.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

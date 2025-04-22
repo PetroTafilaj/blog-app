@@ -2,38 +2,14 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { postsSignal, addPost, updatePost } from './posts.state';
-import { Post } from './post.model';
+import { postsSignal, addPost, updatePost } from '../posts.state';
+import { Post } from '../post.model';
 
 @Component({
   selector: 'app-post-editor',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
-  template: `
-    <div class="container mx-auto p-4">
-      <h1 class="text-2xl font-bold mb-4">{{ isEdit ? 'Edit' : 'New' }} Post</h1>
-      <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
-        <div>
-          <label class="block mb-1">Title</label>
-          <input formControlName="title" class="w-full border rounded p-2" />
-          <div *ngIf="form.controls['title'].invalid && form.controls['title'].touched" class="text-red-600">
-            Title is required.
-          </div>
-        </div>
-        <div>
-          <label class="block mb-1">Content (Markdown)</label>
-          <textarea formControlName="content" rows="8" class="w-full border rounded p-2"></textarea>
-            <div *ngIf="form.controls['content'].invalid && form.controls['content'].touched"
-                class="text-red-600">
-                Content is required.
-            </div>
-        </div>
-        <button type="submit" [disabled]="form.invalid" class="btn">
-          {{ isEdit ? 'Update' : 'Create' }}
-        </button>
-      </form>
-    </div>
-  `
+  templateUrl: './post-editor.component.html',
 })
 export class PostEditorComponent {
   private router = inject(Router);

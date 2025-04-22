@@ -1,0 +1,19 @@
+<div class="container mx-auto p-4">
+    <div class="flex items-center mb-4">
+      <button (click)="goBack()" class="btn mr-2">← Back</button>
+      <button
+        (click)="onDelete()"
+        class="btn text-red-600 hover:underline"
+      >
+        Delete
+      </button>
+      <a
+        [routerLink]="['/editor', post?.id]"
+        class="btn ml-auto"
+        >Edit</a
+      >
+    </div>
+
+    <h1 class="text-3xl font-bold mb-2">{{ post?.title }}</h1>
+    <div class="prose" [innerHTML]="post?.content"></div>
+</div>

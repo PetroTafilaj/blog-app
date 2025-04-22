@@ -1,4 +1,3 @@
-// posts.state.ts
 import { signal } from '@angular/core';
 import { Post } from './post.model';
 
