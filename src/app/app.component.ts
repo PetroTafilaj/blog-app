@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+// app.component.ts
+import { Component, effect } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { postsSignal } from './posts.state';
+import { HeaderComponent } from "./header.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterModule, HeaderComponent],
+  template: `<app-header></app-header><router-outlet></router-outlet>`,
 })
 export class AppComponent {
-  title = 'blog-app';
+  constructor() {
+    // now this runs inside Angular’s injector
+    effect(() => {
+      const posts = postsSignal();
+      localStorage.setItem('posts', JSON.stringify(posts));
+    });
+  }
 }
