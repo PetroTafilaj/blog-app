@@ -1,7 +1,6 @@
-// src/app/home.component.ts
 import { Component, inject } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { NgFor, NgIf, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { computed } from '@angular/core';
 import { postsSignal, deletePost } from '../posts/posts.state';
 import { searchTermSignal } from '../search/search.state';
@@ -9,7 +8,7 @@ import { searchTermSignal } from '../search/search.state';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, NgFor, NgIf, SlicePipe],
+  imports: [RouterModule, SlicePipe],
   templateUrl: './home.component.html',
 })
 export class HomeComponent {

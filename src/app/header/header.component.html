@@ -13,8 +13,12 @@
       />
       <!-- Theme toggle -->
       <button (click)="toggleTheme()" class="focus:outline-none">
-        <span *ngIf="!isDark" class="text-xl">🌞</span>
-        <span *ngIf="isDark"  class="text-xl">🌙</span>
+        @if(!isDark) {
+            <span class="text-xl">🌞</span>
+        }
+        @if(isDark) {
+            <span class="text-xl">🌙</span>
+        }
       </button>
     </div>
 </header>
